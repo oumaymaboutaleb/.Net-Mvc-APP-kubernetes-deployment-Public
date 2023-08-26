@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mvc-service
+spec:
+  selector:
+    app.kubernetes.io/name: mvc
+  ports:
+    - protocol: TCP
+      port: 7777
+      targetPort: 80
+      nodePort: 30100
+  type: NodePort

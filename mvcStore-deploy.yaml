@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mvcstore-deployment
+  labels:
+    app: mvc
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: mvc
+  template:
+    metadata:
+      labels:
+        app: mvc
+    spec:
+      containers:
+        - name: mvc
+          image: oumaaaaaaaaaaaaaaaaaaa/mvbcapponkuberenetes:latest
+          ports:
+          - containerPort: 80
+          env: 
+           - name: ConnectionStrings__ProductContext
+             valueFrom: 
+               secretKeyRef:
+                 key: db-connection-string
+                 name: mvc-secret
+                
