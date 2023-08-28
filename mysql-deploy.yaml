@@ -25,10 +25,10 @@ spec:
         - name: SA_PASSWORD
           value: "@Aa123456"
         volumeMounts:
-        - name: mssql-persistent-storage
+        - name: mssql-pvc-claim
           mountPath: /var/opt/mssql
       volumes:
-      - name: mypvc
+      - name: mssql-pvc-claim
         persistentVolumeClaim:
           claimName: mssql-pvc-claim 
 ---
